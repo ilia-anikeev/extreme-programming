@@ -18,4 +18,9 @@ public class UserLoginDto {
         username = json.get("username").asText();
         password = json.get("password").asText();
     }
+
+    public UserLoginDto(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }

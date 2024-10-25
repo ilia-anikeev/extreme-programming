@@ -29,11 +29,32 @@ public class DatabaseInitializer {
             throw new RuntimeException(e);
         }
     }
+
+    public void initUserListTable(Connection conn) {
+        String sql = "CREATE TABLE user_list(list_id SERIAL PRIMARY KEY, user_id INTEGER, list_name TEXT)";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)){
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            log.error("Init user lists table error", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void initListDataTable(Connection conn) {
+        String sql = "CREATE TABLE list_data(id SERIAL PRIMARY KEY, list_id INTEGER, row_data TEXT)";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)){
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            log.error("Init list data table error", e);
+            throw new RuntimeException(e);
+        }
+    }
     public void initDB() {
         try (Connection conn = dataSource.getConnection()) {
 
             initUserTable(conn);
-
+            initUserListTable(conn);
+            initListDataTable(conn);
             log.info("Database initialization was successful");
         } catch (SQLException e) {
             log.error("Database haven't been initialized", e);
