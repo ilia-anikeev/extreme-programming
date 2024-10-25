@@ -47,6 +47,22 @@ public class ListManagerController {
     }
 
     @CrossOrigin
+    @GetMapping("/get_all_user_lists")
+    public ResponseEntity<String> getAllUserList(@RequestParam int user_id) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            UserList userList = listManagerService.getUserLists(user_id);
+
+            log.info("Lists were received");
+            return ResponseEntity.ok(userList.toJson().toString());
+        } catch (Throwable e) {
+            return ResponseEntity.badRequest().body("Get user list by id error");
+        }
+    }
+
+
+
+    @CrossOrigin
     @PostMapping("/create_list")
     public ResponseEntity<String> createUserList(HttpServletRequest request) {
         try {
