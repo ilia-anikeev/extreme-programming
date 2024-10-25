@@ -21,7 +21,7 @@ public class DatabaseInitializer {
         dataSource = new DriverManagerDataSource(url, name, password);
     }
     public void initUserTable(Connection conn ){
-        String sql = "CREATE TABLE users(id SERIAL PRIMARY KEY, email TEXT, username TEXT, password TEXT)";
+        String sql = "CREATE TABLE users(id SERIAL PRIMARY KEY, username TEXT, password TEXT)";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)){
             preparedStatement.execute();
         } catch (SQLException e) {

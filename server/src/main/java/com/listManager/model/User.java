@@ -9,18 +9,14 @@ public class User {
 
     private final String username;
 
-    private final String email;
-
     private final String password;
 
-    public User (String email, String username, String password){
-        this.email = email;
+    public User (String username, String password){
         this.username = username;
         this.password = password;
     }
 
-    public User (String email, String username, String password, int userID){
-        this.email = email;
+    public User (String username, String password, int userID){
         this.username = username;
         this.password = password;
         this.userID = userID;

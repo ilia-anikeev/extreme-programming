@@ -31,12 +31,8 @@ public class UserService {
         if (userManager.findByUsername(registrationDto.getUsername()) != null) {
             throw new UserAlreadyExist("Username already in use");
         }
-        if (userManager.findUserByEmail(registrationDto.getEmail()) != null) {
-            throw new UserAlreadyExist("Email already in use");
-        }
 
-        User user = new User(registrationDto.getEmail(),
-                registrationDto.getUsername(),
+        User user = new User(registrationDto.getUsername(),
                 hashPassword(registrationDto.getPassword()));
         userManager.registerUser(user);
         return user;

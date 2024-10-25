@@ -16,12 +16,11 @@ class UnitTests {
 
     @Test
     void createUserTest() {
-        UserRegistrationDto userRegistrationDto = new UserRegistrationDto("bebrinskiy", "bebra@example.com", "password");
+        UserRegistrationDto userRegistrationDto = new UserRegistrationDto("bebrinskiy", "password");
         try {
             userService.registerUser(userRegistrationDto);
-            User user = userManager.findUserByEmail("bebra@example.com");
+            User user = userManager.findByUsername("bebrinskiy");
             assertEquals("bebrinskiy", user.getUsername());
-            assertEquals("bebra@example.com", user.getEmail());
             userManager.deleteUser(user.getUserID());
         } catch (UserAlreadyExist | InvalidEmail e) {
             throw new RuntimeException(e);
@@ -29,14 +28,8 @@ class UnitTests {
     }
 
     @Test
-    void badEmail() {
-        UserRegistrationDto userRegistrationDto = new UserRegistrationDto("bebrinskiy", "bebraexample.com", "password");
-        assertThrows(InvalidEmail.class, () -> userService.registerUser(userRegistrationDto));
-    }
-
-    @Test
     void createUserTwice() {
-        UserRegistrationDto userRegistrationDto = new UserRegistrationDto("usertwice", "usertwice@example.com", "password");
+        UserRegistrationDto userRegistrationDto = new UserRegistrationDto("usertwice", "password");
         try {
             User user = userService.registerUser(userRegistrationDto);
             assertThrows(UserAlreadyExist.class, () -> userService.registerUser(userRegistrationDto));
