@@ -4,7 +4,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:layout_marginBottom="?attr/actionBarSize"
-  tools:context=".ui.listmanager.lists.FeedFragment">
+  tools:context=".ui.listmanager.lists.ListsFragment">
 
   <TextView
     android:id="@+id/emptyList"
