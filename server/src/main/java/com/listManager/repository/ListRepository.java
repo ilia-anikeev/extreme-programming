@@ -61,5 +61,24 @@ public class ListRepository {
             throw new RuntimeException(e);
         }
     }
+
+    public int createList(int userID, String listName) {
+        String sql = "INSERT INTO user_list(user_id, list_name) " +
+                "VALUES(?, ?)" +
+                "RETURNING list_id";
+
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            preparedStatement.setInt(1, userID);
+            preparedStatement.setString(2, listName);
+
+            ResultSet rs = preparedStatement.executeQuery();
+            rs.next();
+            return rs.getInt("list_id");
+        } catch (SQLException e) {
+            log.error("List hasn't been saved", e);
+            throw new RuntimeException(e);
+        }
+    }
 }
 

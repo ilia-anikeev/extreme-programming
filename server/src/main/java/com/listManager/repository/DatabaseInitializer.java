@@ -31,7 +31,7 @@ public class DatabaseInitializer {
     }
 
     public void initUserListTable(Connection conn) {
-        String sql = "CREATE TABLE user_list(id SERIAL PRIMARY KEY, user_id INTEGER, list_id INTEGER, list_name TEXT)";
+        String sql = "CREATE TABLE user_list(list_id SERIAL PRIMARY KEY, user_id INTEGER, list_name TEXT)";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sql)){
             preparedStatement.execute();
         } catch (SQLException e) {

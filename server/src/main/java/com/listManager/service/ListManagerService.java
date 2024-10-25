@@ -22,4 +22,8 @@ public class ListManagerService {
         String name = listRepository.getUserListName(listID);
         return new UserList(listID, name, rows);
     }
+
+    public int createList(int userID, String listName) {
+        return listRepository.createList(userID, listName);
+    }
 }

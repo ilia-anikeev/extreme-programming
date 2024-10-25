@@ -7,16 +7,23 @@ import com.listManager.exceptions.UserAlreadyExist;
 import com.listManager.exceptions.UserNotFoundException;
 import com.listManager.model.*;
 import com.listManager.repository.*;
+import com.listManager.service.ListManagerService;
 import com.listManager.service.UserService;
 import org.junit.jupiter.api.Test;
+
+import javax.xml.crypto.Data;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UnitTests {
     private final UserManager userManager = new UserManager();
     private final UserService userService = new UserService(userManager);
+    private final ListManagerService listManagerService = new ListManagerService(new ListRepository());
 
     @Test
     void successfulAuthorization() {
+        new DatabaseCleaner().deleteDB();
+        new DatabaseInitializer().initDB();
         String username = "bebrinskiy";
         String password = "password";
         UserRegistrationDto userRegistrationDto = new UserRegistrationDto(username, password);
@@ -72,4 +79,18 @@ class UnitTests {
             throw new RuntimeException(e);
         }
     }
+
+    @Test
+    void saveList() {
+        try {
+            listManagerService.createList(1, "abobaList2");
+            listManagerService.getUserList(1);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+//    @Test
+//    void getUserList (){
+//        listManagerService.getUserList(1);
+//    }
 }
