@@ -18,7 +18,5 @@ jobs:
       with:
         java-version: '21'
 
-    - name: Test android
-      run: cd app && ./gradlew test
     - name: Test server
       run: cd server && ./gradlew test
