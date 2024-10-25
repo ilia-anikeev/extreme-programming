@@ -14,14 +14,14 @@ Android-приложение для аггрегации списков и их 
 
 ## Build and Run
 
-To build and run the project from the command line:
+Для сборки и запуска:
 
 1) Указать local.properties:
    `local.properties`
          
          sdk.dir =             # path for Android SDK directory
          URL_API =             # URL to access server REST API
-
+2) Запустить приложение в эмуляторе на вашем устройстве (e.g. Android Studio)
 ## Скриншоты
 ![image](https://github.com/user-attachments/assets/70474967-f355-474e-a952-142f09709036)
 ![image](https://github.com/user-attachments/assets/85edc8ca-d447-4a01-a9ef-d0bd1b2ce7fd)
