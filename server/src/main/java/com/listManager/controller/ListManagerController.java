@@ -51,7 +51,7 @@ public class ListManagerController {
     public ResponseEntity<String> getAllUserList(@RequestParam int user_id) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            UserList userList = listManagerService.getUserLists(user_id);
+            UserList userList = listManagerService.getUserList(user_id);
 
             log.info("Lists were received");
             return ResponseEntity.ok(userList.toJson().toString());
