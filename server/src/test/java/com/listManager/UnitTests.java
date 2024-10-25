@@ -13,6 +13,10 @@ import org.junit.jupiter.api.Test;
 
 import javax.xml.crypto.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UnitTests {
@@ -83,14 +87,66 @@ class UnitTests {
     @Test
     void saveList() {
         try {
-            new DatabaseCleaner().deleteDB();
             new DatabaseInitializer().initDB();
-
             listManagerService.createList(1, "lst");
             listManagerService.updateUserList(1, "data");
+
+            new DatabaseCleaner().deleteDB();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
-    
+
+    @Test
+    void getList() {
+        try {
+            new DatabaseCleaner().deleteDB();
+            new DatabaseInitializer().initDB();
+            listManagerService.createList(1, "lst1");
+            List<String> rows = new ArrayList<>();
+            rows.add("dataq");
+            listManagerService.updateUserList(1, rows.get(0));
+
+            UserList list = listManagerService.getUserList(1);
+            UserList expectedList = new UserList(1, "lst1", rows);
+            assertEquals(list.toJson().toString(), expectedList.toJson().toString());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void saveBigDataList() {
+        try {
+            new DatabaseCleaner().deleteDB();
+            new DatabaseInitializer().initDB();
+            listManagerService.createList(1, "lst");
+
+            for (int i = 0; i < 100; ++i) {
+                listManagerService.updateUserList(1, "row" + i);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void getBigDataList() {
+        try {
+            new DatabaseCleaner().deleteDB();
+            new DatabaseInitializer().initDB();
+
+            saveBigDataList();
+            List<String> expectedRows = new ArrayList<>();
+            for (int i = 0; i < 100; ++i) {
+                expectedRows.add("row" + i);
+            }
+
+            UserList list = listManagerService.getUserList(1);
+
+            assertEquals(list.rows.stream().collect(Collectors.toSet()), expectedRows.stream().collect(Collectors.toSet()));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

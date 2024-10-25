@@ -8,9 +8,9 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.List;
 
 public class UserList {
-    Integer id;
-    String name;
-    List<String> rows;
+    public Integer id;
+    public String name;
+    public List<String> rows;
 
     public UserList(int id, String name, List<String> rows) {
         this.id = id;
