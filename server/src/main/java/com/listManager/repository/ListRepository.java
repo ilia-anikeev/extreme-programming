@@ -96,5 +96,24 @@ public class ListRepository {
             throw new RuntimeException(e);
         }
     }
+
+    public List<Integer> getAllUserListIDs(int userID) {
+        String sql = "SELECT list_id FROM user_list WHERE user_id = ?";
+
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            preparedStatement.setInt(1, userID);
+            List<Integer> ids = new ArrayList<>();
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int listID = resultSet.getInt("list_id");
+                ids.add(listID);
+            }
+            return ids;
+        } catch (SQLException e) {
+            log.error("List hasn't been saved", e);
+            throw new RuntimeException(e);
+        }
+    }
 }
 

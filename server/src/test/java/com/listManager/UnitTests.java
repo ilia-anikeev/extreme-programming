@@ -87,6 +87,7 @@ class UnitTests {
     @Test
     void saveList() {
         try {
+            new DatabaseCleaner().deleteDB();
             new DatabaseInitializer().initDB();
             listManagerService.createList(1, "lst");
             listManagerService.updateUserList(1, "data");
