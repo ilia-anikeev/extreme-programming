@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.3'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'ru'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //jdbc
+    implementation 'org.springframework:spring-jdbc:5.3.9'
+
+    //spring-boot
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    //spring-webflux
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    //sprint-boot-test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    //postgresql
+    implementation 'org.postgresql:postgresql'
+
+    //jgrapht
+    implementation 'org.jgrapht:jgrapht-core:1.5.2'
+
+    //lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    //jackson
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.0'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
