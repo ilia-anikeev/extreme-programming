@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <androidx.core.widget.NestedScrollView
+    android:layout_marginTop="?attr/actionBarSize"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+          android:id="@+id/headerTextView"
+          android:textStyle="bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="16dp"
+          android:layout_marginStart="20dp"
+          android:text="@string/plan_your_trip"
+          android:textColor="@color/black"
+          android:textSize="40sp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+          android:layout_gravity="center"
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          app:tint="@color/light_orange"
+          android:layout_marginStart="15dp"
+          android:src="@drawable/ic_map"/>
+      </LinearLayout>
+
+      <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_weight="1"
+        android:background="@color/light_orange" />
+      <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/travelNameLabel"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginStart="35dp"
+        android:text="Name your trip:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerTextView" />
+
+      <EditText
+        android:id="@+id/travelNameEditText"
+        android:background="@drawable/edit_text_background"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:autofillHints=""
+        android:hint="Name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toEndOf="@id/travelNameLabel"
+        app:layout_constraintTop_toTopOf="@id/travelNameLabel" />
+      <TextView
+        android:id="@+id/departureDateLabel"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginStart="35dp"
+        android:textSize="20sp"
+        android:text="Select departure date:"
+        app:layout_constraintTop_toBottomOf="@id/travelNameEditText" />
+
+      <TextView
+        android:id="@+id/departureDateEditText"
+        android:background="@drawable/edit_text_background"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:autofillHints=""
+        android:inputType="date"
+        android:hint="Departure date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/departureDateLabel"
+        app:layout_constraintTop_toTopOf="@id/departureDateLabel" />
+      <TextView
+        android:id="@+id/arrivalDateLabel"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginStart="35dp"
+        android:textSize="20sp"
+        android:text="Select arival date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/departureDateEditText" />
+
+      <TextView
+        android:id="@+id/arrivalDateEditText"
+        android:background="@drawable/edit_text_background"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:autofillHints=""
+        android:hint="@string/select_arrival_date"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/arrivalDateLabel"
+        app:layout_constraintTop_toTopOf="@id/arrivalDateLabel" />
+
+      <TextView
+        android:id="@+id/budgetLabel"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginStart="35dp"
+        android:textSize="20sp"
+
+        android:text="Enter planned budget (USD):"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/arrivalDateEditText" />
+
+      <EditText
+        android:id="@+id/budgetEditText"
+        android:background="@drawable/edit_text_background"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:autofillHints=""
+        android:hint="Budget"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/budgetLabel"
+        app:layout_constraintTop_toTopOf="@id/budgetLabel" />
+      <View
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_weight="1"
+        android:background="@color/light_orange" />
+
+
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+          android:padding="16dp"
+          android:layout_marginStart="20dp"
+          android:id="@+id/countries_text_title"
+          android:textStyle="bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Route:"
+          android:textColor="@color/black"
+          android:textSize="40sp"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="@+id/add_country" />
+        <ImageButton
+          android:layout_gravity="center"
+          android:id="@+id/add_country"
+          android:layout_width="40dp"
+          android:layout_height="40dp"
+          android:layout_marginStart="80dp"
+          android:src="@drawable/baseline_add_24"
+          android:background="@drawable/profile_button_shape"
+          app:tint="@color/white"/>
+        <TextView
+          android:padding="10dp"
+          android:layout_gravity="center"
+          android:textSize="15sp"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Add new destination"/>
+      </LinearLayout>
+
+      <LinearLayout
+        android:id="@+id/route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/countries_text_title">
+
+
+      </LinearLayout>
+      <View
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_weight="1"
+        android:background="@color/light_orange" />
+
+      <Button
+        android:background="@drawable/button"
+        android:id="@+id/saveButton"
+        android:layout_marginTop="20dp"
+        android:layout_height="60dp"
+        android:layout_width="300dp"
+        android:layout_marginStart="55dp"
+        android:text="plan trip"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/route" />
+
+      <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+    </LinearLayout>
+  </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

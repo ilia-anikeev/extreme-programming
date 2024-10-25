@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item
+    android:icon="@drawable/ic_home_black_24dp"
+    android:id="@id/navigation_feed"
+    android:title="Lists" />
+  <item
+    android:enabled="false"
+    android:id="@+id/fab"
+    android:title="" />
+
+  <item
+    android:icon="@drawable/baseline_account_circle_24"
+    android:id="@id/profile_navigation_graph"
+    android:title="@string/title_profile" />
+
+</menu>
