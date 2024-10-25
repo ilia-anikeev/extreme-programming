@@ -5,7 +5,6 @@ import com.listManager.dto.UserRegistrationDto;
 
 import com.listManager.exceptions.InvalidPassword;
 import com.listManager.exceptions.UserAlreadyExist;
-import com.listManager.exceptions.InvalidEmail;
 import com.listManager.exceptions.UserNotFoundException;
 import com.listManager.model.User;
 
@@ -27,7 +26,7 @@ public class UserService {
         this.userManager = userManager;
     }
 
-    public User registerUser(UserRegistrationDto registrationDto) throws UserAlreadyExist, InvalidEmail {
+    public User registerUser(UserRegistrationDto registrationDto) throws UserAlreadyExist {
         if (userManager.findByUsername(registrationDto.getUsername()) != null) {
             throw new UserAlreadyExist("Username already in use");
         }

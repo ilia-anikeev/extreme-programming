@@ -7,7 +7,6 @@ import com.listManager.dto.UserRegistrationDto;
 
 import com.listManager.exceptions.InvalidPassword;
 import com.listManager.exceptions.UserAlreadyExist;
-import com.listManager.exceptions.InvalidEmail;
 import com.listManager.exceptions.UserNotFoundException;
 import com.listManager.model.User;
 
@@ -44,7 +43,7 @@ public class AuthorizationController {
             UserRegistrationDto registrationDto = new UserRegistrationDto(json);
             User user = userService.registerUser(registrationDto);
             return ResponseEntity.ok(Integer.toString(user.getUserID()));
-        } catch (UserAlreadyExist | InvalidEmail e) {
+        } catch (UserAlreadyExist e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Throwable e) {
             log.error("Server error", e);

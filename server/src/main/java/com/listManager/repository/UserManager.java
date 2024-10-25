@@ -1,6 +1,5 @@
 package com.listManager.repository;
 
-import com.listManager.exceptions.InvalidEmail;
 import com.listManager.util.PropertiesUtil;
 import com.listManager.model.User;
 import org.slf4j.Logger;
@@ -25,7 +24,7 @@ public class UserManager {
         dataSource = new DriverManagerDataSource(url, name, password);
     }
 
-    public void registerUser(User user) throws InvalidEmail {
+    public void registerUser(User user) {
         String sqlInsert = "INSERT INTO users(username, password) VALUES(?,?) RETURNING id";
         try(Connection conn = dataSource.getConnection();
             PreparedStatement preparedStatement = conn.prepareStatement(sqlInsert)){
