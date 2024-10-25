@@ -26,13 +26,13 @@ class UnitTests {
 
     @Test
     void successfulAuthorization() {
-        new DatabaseCleaner().deleteDB();
-        new DatabaseInitializer().initDB();
         String username = "bebrinskiy";
         String password = "password";
         UserRegistrationDto userRegistrationDto = new UserRegistrationDto(username, password);
         UserLoginDto userLoginDto = new UserLoginDto(username, password);
         try {
+            new DatabaseCleaner().deleteDB();
+            new DatabaseInitializer().initDB();
             userService.registerUser(userRegistrationDto);
 
             User user = userService.loginUser(userLoginDto);
@@ -48,6 +48,8 @@ class UnitTests {
         String password = "password";
         UserRegistrationDto userRegistrationDto = new UserRegistrationDto(username, password);
         try {
+            new DatabaseCleaner().deleteDB();
+            new DatabaseInitializer().initDB();
             User user = userService.registerUser(userRegistrationDto);
 
             String invalidPassword = "invalid";
@@ -63,6 +65,8 @@ class UnitTests {
     void createUserTest() {
         UserRegistrationDto userRegistrationDto = new UserRegistrationDto("bebrinskiy", "password");
         try {
+            new DatabaseCleaner().deleteDB();
+            new DatabaseInitializer().initDB();
             userService.registerUser(userRegistrationDto);
             User user = userManager.findByUsername("bebrinskiy");
             assertEquals("bebrinskiy", user.getUsername());
@@ -76,6 +80,8 @@ class UnitTests {
     void createUserTwice() {
         UserRegistrationDto userRegistrationDto = new UserRegistrationDto("usertwice", "password");
         try {
+            new DatabaseCleaner().deleteDB();
+            new DatabaseInitializer().initDB();
             User user = userService.registerUser(userRegistrationDto);
             assertThrows(UserAlreadyExist.class, () -> userService.registerUser(userRegistrationDto));
             userManager.deleteUser(user.getUserID());
@@ -92,7 +98,6 @@ class UnitTests {
             listManagerService.createList(1, "lst");
             listManagerService.updateUserList(1, "data");
 
-            new DatabaseCleaner().deleteDB();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
