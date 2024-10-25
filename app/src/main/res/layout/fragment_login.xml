@@ -4,6 +4,7 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   tools:context=".ui.authentication.LoginFragment"
   android:layout_height="match_parent"
+  android:background="#CBA"
   android:layout_width="match_parent">
 
 
