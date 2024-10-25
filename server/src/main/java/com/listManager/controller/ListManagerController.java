@@ -63,4 +63,23 @@ public class ListManagerController {
             return ResponseEntity.badRequest().body("Create list error");
         }
     }
+
+    @CrossOrigin
+    @PostMapping("/update_list")
+    public ResponseEntity<String> updateUserList(HttpServletRequest request) {
+        try {
+            String jsonString = request.getReader().lines().collect(Collectors.joining());
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode json = mapper.readTree(jsonString);
+
+            int listID = json.get("list_id").asInt();
+            String data = json.get("row_data").asText();
+
+            listManagerService.updateUserList(listID, data);
+
+            return ResponseEntity.ok("Success");
+        } catch (Throwable e) {
+            return ResponseEntity.badRequest().body("Create list error");
+        }
+    }
 }

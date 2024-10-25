@@ -80,5 +80,21 @@ public class ListRepository {
             throw new RuntimeException(e);
         }
     }
+
+    public void updateListData(int listID, String rowData) {
+        String sql = "INSERT INTO list_data(list_id, row_data) " +
+                "VALUES(?, ?)";
+
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            preparedStatement.setInt(1, listID);
+            preparedStatement.setString(2, rowData);
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            log.error("List hasn't been saved", e);
+            throw new RuntimeException(e);
+        }
+    }
 }
 

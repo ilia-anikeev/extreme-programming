@@ -83,14 +83,14 @@ class UnitTests {
     @Test
     void saveList() {
         try {
-            listManagerService.createList(1, "abobaList2");
-            listManagerService.getUserList(1);
+            new DatabaseCleaner().deleteDB();
+            new DatabaseInitializer().initDB();
+
+            listManagerService.createList(1, "lst");
+            listManagerService.updateUserList(1, "data");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
-//    @Test
-//    void getUserList (){
-//        listManagerService.getUserList(1);
-//    }
+    
 }

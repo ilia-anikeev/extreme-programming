@@ -23,6 +23,10 @@ public class ListManagerService {
         return new UserList(listID, name, rows);
     }
 
+    public void updateUserList(int listID, String rowData) {
+        listRepository.updateListData(listID, rowData);
+    }
+
     public int createList(int userID, String listName) {
         return listRepository.createList(userID, listName);
     }
