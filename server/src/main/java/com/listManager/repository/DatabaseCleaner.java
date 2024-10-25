@@ -24,7 +24,7 @@ public class DatabaseCleaner {
 
     public void deleteDB() {
         try (Connection conn = dataSource.getConnection()){
-            List<String> tables = List.of("users");
+            List<String> tables = List.of("users", "list_data", "user_list");
             for (String tableName: tables) {
                 String sql = "DROP TABLE " + tableName;
                 PreparedStatement preparedStatement = conn.prepareStatement(sql);
